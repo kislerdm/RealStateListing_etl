@@ -1,0 +1,11 @@
+[Input-file]
+filepath = C:\Users\sachin.vyas\Documents\ds_training\
+fileprefix = immobilienscout24
+processing_directory = C:\\Users\\sachin.vyas\\Documents\\ds_training\\processing_dir\\
+
+[database-connection]
+dbname=postgres
+host=localhost
+password=unix11
+port=5432
+user=postgres
