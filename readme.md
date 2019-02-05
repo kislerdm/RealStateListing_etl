@@ -7,6 +7,9 @@ Programs reads the input json file having details of flat ad listing on immobili
 
 ## How to run
 ```
+Please note program currently expect extracted file not .zip as a input.
+Please place the input file in the path mentioned in filepath in config.txt.
+
 to start the process
 > python main.py
 
