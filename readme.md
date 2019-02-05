@@ -5,6 +5,16 @@ Programs reads the input json file having details of flat ad listing on immobili
   - language - Python 3.7.0
   - database - postgres10
 
+## How to run
+```
+to start the process
+> python main.py
+
+to stop the process
+> python stop.py
+
+```
+
 
 # Functionality :
 ## HighLevel :

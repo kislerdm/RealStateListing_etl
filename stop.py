@@ -8,8 +8,6 @@ logger = logging.getLogger(__name__)
 def stop():
     """
     function to create a dummy file stop.dat which will shutdown the main process
-
-
     :return:
     """
 

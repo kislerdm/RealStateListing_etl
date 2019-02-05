@@ -24,8 +24,8 @@ CREATE TABLE dim_flat_address
     quarter varchar(40),
     city varchar(60),
     region varchar(60),
-    flat_longitude INTEGER,
-    flat_latitude INTEGER,
+    flat_longitude varchar(30),
+    flat_latitude varchar(30),
     post_code varchar(11),
     PRIMARY KEY (flat_id),
     FOREIGN KEY (flat_id) REFERENCES fact_flat (flat_id));

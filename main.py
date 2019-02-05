@@ -12,12 +12,12 @@ verbose = True
 
 def main():
     """
-    functionality :
-        HighLevel :
+    # functionality :
+        ## HighLevel :
                 1. This programs reads the input json file having details of flat ad listing on immobilienscout24.
                 2. Extracts the necessary (see below table structure ) information  from file and insert into
                     postgresql database for further analysis.
-        Prerequisite:
+        ## Prerequisite:
                 1. Configure the input directory, file prefix and processing directory in config.txt under Input-file section.
                 2. Configure postgresql db details in config.txt under database-connection section.
                 3. For this exercise already done but if changes needed - please populate mapping.txt with the mapping
@@ -33,7 +33,7 @@ def main():
                 5. Install the packages mentioned in requirements.txt
                 6. Install postgresql db. and run create_table.sql to create tables.
 
-         Detailed :
+         ## Detailed :
                 1. program runs as a daemon, use stop.py to stop it. it will only stops after processing current batch
                     of files.
                 2. It continuously ( sleeps for 90 secs in between) polls the input directory (filepath) for file
@@ -48,11 +48,12 @@ def main():
                 8. Once all the records are inserted into database call commit.
                 9. sleep for 90 seconds and then poll the input directory for new file.
 
-        #Table Structure :
+        # Table Structure :
 
-            ##fact_flat
+            ## fact_flat
 
-            Fact table in star schema, contains most important details related to flat, can be used alone to do analytics on available flats in a price range etc.
+            Fact table in star schema, contains most important details related to flat, can be used alone to do
+            analytics on available flats in a price range etc.
 
 
             |------------------------------------------------------------------------------------------------------|
@@ -70,7 +71,7 @@ def main():
             |number_of_rooms  |INTEGER      |               |           | number of rooms in property             |
             |------------------------------------------------------------------------------------------------------|
 
-            ##dim_flat_address
+            ## dim_flat_address
 
             This dimension table contains address information of flat listed in fact_flat table.
 
@@ -89,7 +90,7 @@ def main():
             |post_code        |varchar(11)  |               |           | postcode of property         |
             |------------------------------------------------------------------------------------------|
 
-            ##dim_agency
+            ## dim_agency
 
             This dimension table contains information of agency posted the ad for property and their address.
 
@@ -109,7 +110,7 @@ def main():
             |phone_number     |varchar(50)  |               |           | phone number of agency|
             |-----------------------------------------------------------------------------------|
 
-            ##dim_flat_details
+            ## dim_flat_details
 
             This dimension table contains additional details for property which will be useful for analysis.
 
@@ -131,7 +132,7 @@ def main():
             |-------------------------------------------------------------------------------------------|
 
 
-            ##dim_flat_metadata
+            ## dim_flat_metadata
 
             This dimension table contains metadata information of ad posted on site.
 
@@ -164,7 +165,7 @@ def main():
                 os.rename(source_file, target_file)
                 main_parser(target_file)
 
-        time.sleep(10)
+        time.sleep(90)
 
 
 def init():
@@ -185,10 +186,12 @@ def init():
 
 def main_parser(file_name):
     """
+    This function gets the file_name, it opens the file and read it line by line and create dictionary with column name.
+    inserts the data into database and perform commit.
     :param file_name:
     :return:
     """
-    print("entered main parser")
+
     if file_name is None:
         return -1
     logger.info("Started processing " + file_name)
@@ -222,5 +225,5 @@ def main_parser(file_name):
 
 if __name__ == "__main__":
     init()
-    print(file_config,db_connection)
+    #print(file_config,db_connection)
     main()

@@ -121,6 +121,8 @@ def business_logic(data):
             #print(data['service_charge'],data['heating_cost'])
             data['service_charge'] = int(data['service_charge']) + int(data['heating_cost'])
 
+
+
     except KeyError as e:
         logger.error("Got {} for {}".format(e,e.args))
         raise
@@ -135,6 +137,7 @@ def get_insert_query():
         """
 
         query = """
+            
             INSERT into 
                 fact_flat 
                 (flat_id, city, agency_id,  apartment_type, apartment_size, base_rent, total_rent, rent_scope, number_of_rooms) 
